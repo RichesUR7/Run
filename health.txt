@@ -1,0 +1,94 @@
+================================================================================
+ Run — System Health Report
+ Host: localhost | Platform: Linux | Generated: 2026-10-10 01:24:37 +0100
+ Read-only, best-effort diagnostics; unavailable checks are marked SKIP.
+================================================================================
+
+== Operating system and platform ==
+--------------------------------------------------------------------------------
+  PASS  Operating system          Linux
+  INFO  Kernel / architecture     Linux 6.6.118-android15-8-abA065FXXUECZI1-4k; aarch64
+  INFO  Hostname                  localhost
+  INFO  Uptime                    up 6 hours, 8 minutes
+  INFO  Execution privileges      Running as u0_a380; some hardware/log checks may be restricted
+  INFO  Virtualization            No supported virtualization detector reported a guest
+  SKIP  Clock synchronization     timedatectl not available; time-sync state not evaluated
+
+== CPU and chip ==
+--------------------------------------------------------------------------------
+  PASS  CPU / SoC model           Cortex-A55
+  PASS  Logical CPU count         8 online logical processor(s)
+  SKIP  Load average              Load average unavailable
+  SKIP  CPU microcode             Microcode revision not exposed through /proc/cpuinfo
+  INFO  CPU vendor / implementer  0x41
+
+== Memory and swap ==
+--------------------------------------------------------------------------------
+  PASS  Physical memory           80.7% estimated in use; 700 MiB available of 3633 MiB
+  INFO  Swap                      4096 MiB total, 2492 MiB free
+
+== Storage and file systems ==
+--------------------------------------------------------------------------------
+  FAIL  Root filesystem space     100% used; 0 MiB available of 4893 MiB
+  INFO  Root filesystem type      erofs
+  PASS  Root inode usage          1% inodes used
+  SKIP  Physical storage devices  No supported disk inventory command returned devices (common in containers)
+  SKIP  SMART health              smartctl not installed; disk SMART health was not queried
+  SKIP  NVMe health               nvme-cli not installed; NVMe logs not queried
+
+== Network and connectivity ==
+--------------------------------------------------------------------------------
+  INFO  Active interfaces         No active non-loopback interface found, or interface listing is restricted
+  INFO  Default route             No default route found; offline or isolated networks may be intentional
+  INFO  DNS configuration         No nameserver entry visible in /etc/resolv.conf; resolver may be managed elsewhere
+  SKIP  External connectivity test Not run; pass --network-test to perform DNS/ICMP requests
+
+== Thermal sensors and cooling ==
+--------------------------------------------------------------------------------
+  SKIP  Thermal sensors           No readable Linux thermal zones or lm-sensors command
+  SKIP  Fan tachometer readings   No Linux hwmon fan tachometer reading exposed; this is common on laptops and embedded devices
+
+== Battery and power ==
+--------------------------------------------------------------------------------
+  SKIP  Battery presence          No readable battery interface detected; desktop devices and some embedded boards have no battery
+
+== Hardware and peripheral inventory ==
+--------------------------------------------------------------------------------
+  INFO  PCI / PCIe inventory      0 device(s) enumerated by lspci
+  INFO  USB inventory             0 device(s) enumerated by lsusb
+  SKIP  Graphics / DRM devices    No Linux DRM card nodes found or this platform uses another graphics stack
+  SKIP  NVIDIA GPU status         nvidia-smi not available; NVIDIA telemetry not queried
+  INFO  Serial device nodes       0 matching USB/UART serial node(s) in /dev
+  INFO  I2C device nodes          0 /dev/i2c-* node(s); permissions and driver support not tested
+  INFO  SPI device nodes          0 /dev/spidev* node(s); permissions and driver support not tested
+
+== Embedded systems and board health ==
+--------------------------------------------------------------------------------
+  SKIP  Device-tree board model   No device-tree model found; common on PCs, Macs, and some virtual machines
+  INFO  Firmware interfaces       0 top-level firmware interface(s) visible under /sys/firmware
+  SKIP  Board-specific telemetry  No vcgencmd utility; Raspberry Pi-specific power flags unavailable
+  SKIP  ECC memory telemetry      edac-util not installed; ECC telemetry is platform-specific
+
+== Processes and system pressure ==
+--------------------------------------------------------------------------------
+  INFO  Process count             6 process(es) visible to the current user
+  PASS  Zombie processes          No visible zombie processes
+  SKIP  Memory PSI                Linux pressure-stall metrics are not exposed on this platform
+  INFO  vmstat snapshot           r b swpd free buff cache si so bi bo in cs us sy id wa st
+
+== Security posture (read-only indicators) ==
+--------------------------------------------------------------------------------
+  INFO  SELinux                   State: unknown
+  SKIP  AppArmor                  aa-status not installed; AppArmor state not queried
+  SKIP  Host firewall             No supported firewall status tool found; this is not proof that no firewall exists
+  SKIP  Kernel lockdown           Kernel lockdown state is not exposed here
+  SKIP  Linux ASLR                Linux ASLR setting not exposed on this platform
+
+== Kernel and recent system logs ==
+--------------------------------------------------------------------------------
+  SKIP  Hardware-related kernel messages Kernel log buffer is empty or permission-restricted
+  SKIP  Recent journal errors     systemd journal is not available
+
+== Summary ==
+  OVERALL: FAIL | PASS: 6 | WARN: 0 | FAIL: 1 | INFO: 20 | SKIP: 22 | Checks: 49
+Thresholds are advisory. A PASS means no issue was detected by the checks available here.
