@@ -1,43 +1,53 @@
-Run.sh
 
-Portable System Health & Hardware Diagnostics
+# Run.sh
+
+## Portable System Health & Hardware Diagnostics
 
 A lightweight Bash utility for inspecting system health, collecting hardware information, and identifying potential issues through read-only diagnostic checks.
 
-""License: MIT" (https://img.shields.io/badge/License-MIT-green.svg)" (LICENSE)
-"Language" (https://img.shields.io/badge/Language-Bash-blue.svg)
-"Version" (https://img.shields.io/badge/version-1.1.0-orange.svg)
+**Version:** 1.1.0  
+**Language:** Bash  
+**License:** MIT
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+![Language](https://img.shields.io/badge/Language-Bash-blue.svg)
+![Version](https://img.shields.io/badge/Version-1.1.0-orange.svg)
 
 ---
 
-Features
+## Features
 
-- System Diagnostics — Collect basic system health information.
-- Hardware Inspection — Identify available hardware information and diagnostic tools.
-- Read-Only Design — Inspect system state without intentionally modifying system configuration.
-- Quick Scan — Run a shorter diagnostic pass.
-- JSON Output — Export results for automation and integration.
-- Portable Design — Designed for Linux and Unix-like systems.
-- Graceful Degradation — Report when checks cannot run because of missing tools, unsupported hardware, or insufficient permissions.
-- Terminal Interface — Display diagnostic results and a summary of findings.
+- **System Diagnostics** — Collect basic system health information.
+- **Hardware Inspection** — Identify available hardware information and diagnostic tools.
+- **Read-Only Design** — Inspect system state without intentionally modifying system configuration.
+- **Quick Scan** — Run a shorter diagnostic pass.
+- **JSON Output** — Export results for automation and integration.
+- **Portable Design** — Designed for Linux and Unix-like systems.
+- **Graceful Degradation** — Report when checks cannot run because of missing tools, unsupported hardware, or insufficient permissions.
+- **Terminal Interface** — Display diagnostic results and a summary of findings.
 
-«Note: Available checks depend on the operating system, hardware, installed utilities, and user permissions. Not every diagnostic is supported on every platform.»
+> **Note:** Available checks depend on the operating system, hardware, installed utilities, and user permissions. Not every diagnostic is supported on every platform.
 
-Supported Platforms
+---
 
-Platform| Support
-Linux| Primary target
-macOS| Compatibility testing required
-FreeBSD| Compatibility testing required
-Other BSD systems| Compatibility testing required
-Raspberry Pi| Depends on operating system and hardware
-Embedded Linux| Depends on available utilities and system configuration
+## Supported Platforms
+
+| Platform | Support |
+|---|---|
+| Linux | Primary target |
+| macOS | Compatibility testing required |
+| FreeBSD | Compatibility testing required |
+| Other BSD systems | Compatibility testing required |
+| Raspberry Pi | Depends on operating system and hardware |
+| Embedded Linux | Depends on available utilities and system configuration |
 
 Run.sh requires Bash. Some diagnostic checks may depend on platform-specific commands.
 
 Platform compatibility should be confirmed through testing before being considered officially supported.
 
-Requirements
+---
+
+## Requirements
 
 - Bash
 - Standard Unix command-line utilities
@@ -45,63 +55,90 @@ Requirements
 
 Run the script as a regular user first. Use elevated privileges only when a particular diagnostic requires them.
 
-Installation
+---
+
+## Installation
 
 Clone your repository:
 
+```bash
 git clone <your-repository-url>
 cd <your-repository-directory>
+```
 
 Make the script executable:
 
+```bash
 chmod +x Run.sh
+```
 
-Usage
+---
 
-Run a full diagnostic scan
+## Usage
 
+### Run a Full Diagnostic Scan
+
+```bash
 ./Run.sh
+```
 
-Run a quick scan
+### Run a Quick Scan
 
+```bash
 ./Run.sh --quick
+```
 
-Display help
+### Display Help
 
+```bash
 ./Run.sh --help
+```
 
-Display the version
+### Display the Version
 
+```bash
 ./Run.sh --version
+```
 
-JSON Reports
+---
+
+## JSON Reports
 
 Generate a JSON report:
 
+```bash
 ./Run.sh --quick --plain --json report.json
+```
 
 Validate the report:
 
+```bash
 python3 -m json.tool report.json
+```
 
 JSON output can be used for automated testing, reporting, and integration with other tools.
 
-«Privacy: Review reports before sharing them. They may contain host details, hardware information, software versions, or other identifying information.»
+> **Privacy:** Review reports before sharing them. They may contain host details, hardware information, software versions, or other identifying information.
 
-Understanding Results
+---
 
-Status| Meaning
-🟢 "PASS"| The check completed without detecting the condition it was designed to identify.
-🟡 "WARN"| A potential issue requiring review was detected.
-🔴 "FAIL"| A check detected a condition classified as a failure.
-🔵 "INFO"| Informational system data was collected.
-⚪ "SKIP"| A check could not be performed or was not applicable.
+## Understanding Results
+
+| Status | Meaning |
+|---|---|
+| 🟢 `PASS` | The check completed without detecting the condition it was designed to identify. |
+| 🟡 `WARN` | A potential issue requiring review was detected. |
+| 🔴 `FAIL` | A check detected a condition classified as a failure. |
+| 🔵 `INFO` | Informational system data was collected. |
+| ⚪ `SKIP` | A check could not be performed or was not applicable. |
 
 A warning does not necessarily mean hardware is failing. A passing result does not guarantee that the system is free from problems.
 
 A check may be skipped because a utility is missing, permissions are insufficient, hardware information is unavailable, or the check does not apply to the current system.
 
-Safety and Security
+---
+
+## Safety and Security
 
 Run.sh is designed for read-only diagnostics.
 
@@ -116,7 +153,7 @@ It should not automatically repair the system, change configuration, delete file
 
 Review the script and its dependencies before running it on critical systems. Read-only behavior should be verified for every release.
 
-Recommended Precautions
+### Recommended Precautions
 
 - Avoid running as root unless necessary.
 - Download the script from a trusted source.
@@ -125,17 +162,23 @@ Recommended Precautions
 - Review reports before sharing them.
 - Test new releases in a non-production environment.
 
-Troubleshooting
+---
 
-Permission denied
+## Troubleshooting
 
+### Permission Denied
+
+```bash
 chmod +x Run.sh
+```
 
 Alternatively:
 
+```bash
 bash Run.sh
+```
 
-A diagnostic is skipped
+### A Diagnostic Is Skipped
 
 A check may be skipped when:
 
@@ -147,35 +190,49 @@ A check may be skipped when:
 
 A skipped check should not automatically be interpreted as a hardware problem.
 
-Validate JSON output
+### Validate JSON Output
 
+```bash
 python3 -m json.tool report.json
+```
 
 If validation fails, include the relevant error and Run.sh version when reporting the issue.
 
-Testing
+---
+
+## Testing
 
 Check Bash syntax:
 
+```bash
 bash -n Run.sh
+```
 
 Check the version and help output:
 
+```bash
 ./Run.sh --version
 ./Run.sh --help
+```
 
 Run a quick scan:
 
+```bash
 ./Run.sh --quick --plain
+```
 
 Test JSON generation:
 
+```bash
 ./Run.sh --quick --plain --json report.json
 python3 -m json.tool report.json
+```
 
 Test on each operating system you intend to support, including systems where optional diagnostic utilities are missing.
 
-Roadmap
+---
+
+## Roadmap
 
 Potential future improvements:
 
@@ -194,7 +251,9 @@ Potential future improvements:
 
 These are planned improvements, not claims that the features are already implemented.
 
-Contributing
+---
+
+## Contributing
 
 Contributions are welcome.
 
@@ -208,7 +267,9 @@ When submitting a change:
 6. Document new command-line options.
 7. Include example output where useful.
 
-For bug reports, include:
+### Reporting Bugs
+
+Include:
 
 - Run.sh version
 - Operating system and version
@@ -216,13 +277,17 @@ For bug reports, include:
 - Command used
 - Relevant output with sensitive information removed
 
-License
+---
 
-Run.sh is distributed under the "MIT License" (LICENSE).
+## License
 
-See the "LICENSE" file for the complete license text.
+Run.sh is distributed under the [MIT License](LICENSE).
 
-Disclaimer
+See the `LICENSE` file for the complete license text.
+
+---
+
+## Disclaimer
 
 Run.sh provides diagnostic information for troubleshooting and system maintenance. Its results are not a guarantee of hardware reliability, system security, or future performance.
 
@@ -230,4 +295,4 @@ Back up important data and consult qualified technical support when investigatin
 
 ---
 
-Project goal: Provide a lightweight, understandable, and portable diagnostic utility that helps users inspect their systems without unnecessary complexity or unintended system changes.
+**Project Goal:** Provide a lightweight, understandable, and portable diagnostic utility that helps users inspect their systems without unnecessary complexity or unintended system changes.
